@@ -1,0 +1,308 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Hubspot CRM API",
+    "description": "API for managing contacts, deals, support tickets, and authentication in HubSpot.",
+    "version": "1.0.0"
+  },
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "Enter your login token here"
+    }
+  },
+  "security": [
+    {
+      "Authorization": []
+    }
+  ], 
+  "basePath": "/api",
+  "paths": {
+    "/create_contact": {
+      "post": {
+        "summary": "Create or update a contact",
+        "description": "Create a new contact or update an existing contact in HubSpot.",
+        "tags": ["Integration"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "contact",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created or updated contact"
+          }
+        }
+      }
+    },
+    "/create_deal": {
+      "post": {
+        "summary": "Create or update a deal",
+        "description": "Create a new deal or update an existing deal in HubSpot.",
+        "tags": ["Integration"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "deal",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Deal"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created or updated deal"
+          }
+        }
+      }
+    },
+    "/create_ticket": {
+      "post": {
+        "summary": "Create a support ticket",
+        "description": "Create a new support ticket in HubSpot.",
+        "tags": ["Integration"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "ticket",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SupportTicket"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created support ticket"
+          }
+        }
+      }
+    },
+    "/new_crm_objects": {
+      "get": {
+        "summary": "Get new CRM objects",
+        "description": "Fetch recent contacts, deals, and support tickets.",
+        "tags": ["Integration"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "description": "Page number for pagination",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "page_size",
+            "type": "integer",
+            "description": "Number of results per page",
+            "default": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched CRM objects",
+            "schema": {
+              "$ref": "#/definitions/CRMObjects"
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "summary": "Register a new user",
+        "description": "Create a new user account.",
+        "tags": ["Auth"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User successfully registered"
+          },
+          "409": {
+            "description": "Username already exists"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "User login",
+        "description": "Authenticate and log in a user, returning a JWT access token.",
+        "tags": ["Auth"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "credentials",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginCredentials"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully logged in",
+            "schema": {
+              "$ref": "#/definitions/AccessToken"
+            }
+          },
+          "401": {
+            "description": "Invalid username or password"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      },
+      "required": ["email", "firstname", "lastname", "phone"]
+    },
+    "Deal": {
+      "type": "object",
+      "properties": {
+        "dealname": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "dealstage": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "required": ["dealname", "amount", "dealstage", "email"]
+    },
+    "SupportTicket": {
+      "type": "object",
+      "properties": {
+        "subject": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "general_inquiry",
+            "technical_issue",
+            "billing",
+            "service_request",
+            "meeting"
+          ]
+        },
+        "pipeline": {
+          "type": "string"
+        },
+        "hs_ticket_priority": {
+          "type": "string"
+        },
+        "hs_pipeline_stage": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "subject",
+        "description",
+        "category",
+        "pipeline",
+        "hs_ticket_priority",
+        "hs_pipeline_stage"
+      ]
+    },
+    "CRMObjects": {
+      "type": "object",
+      "properties": {
+        "contacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Contact"
+          }
+        },
+        "deals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Deal"
+          }
+        },
+        "tickets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SupportTicket"
+          }
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": ["username", "password"]
+    },
+    "LoginCredentials": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": ["username", "password"]
+    },
+    "AccessToken": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
