@@ -99,8 +99,3 @@ def get_new_crm_objects():
     except ValueError as e:
         logger.error(f"Error retrieving new CRM objects: {e}")
         return jsonify({"Error": str(e)}), 400
-
-        return jsonify(crm_objects), 200
-    except ValueError as e:
-        logger.error(f"Error retrieving new CRM objects: {e}")
-        return jsonify({"Error": str(e)}), 400
