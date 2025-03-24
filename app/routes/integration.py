@@ -88,11 +88,6 @@ def get_new_crm_objects():
             tickets = [t for t in tickets if filter_by.lower()
                        in str(t).lower()]
 
-        try:
-        contacts = contact_service.get_recent_contacts(page, page_size)
-        deals = deal_service.get_recent_deals(page, page_size)
-        tickets = ticket_service.get_recent_tickets(page, page_size)
-
         # Return the results in an object
         crm_objects = {
             "contacts": [contact.to_dict() for contact in contacts],
