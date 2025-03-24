@@ -85,7 +85,7 @@ This project leverages Flask for the backend and integrates with HubSpot's CRM s
    - Health check at http://localhost:5000/health
 
 
-## Dockerisation and Deployment
+## Dockerisation and Scaled Deployment using Kubernetes
 
 1. **Build the Docker image**
    To dockerize the application, we need to build a Docker image. The project comes with a Dockerfile that sets up the environment and installs the necessary dependencies.
@@ -109,6 +109,22 @@ This project leverages Flask for the backend and integrates with HubSpot's CRM s
 
 3. **Verify the app is running**
    Verify that the application is running on http://localhost:5000.
+
+4. **Container Orchestration with Kubernetes (Optional)**:
+   - Before deploying, ensure to have the following set up:
+
+   - A Kubernetes cluster (e.g., Minikube, EKS, GKE, or AKS).
+   - `kubectl` installed on your local machine and configured to interact with your Kubernetes cluster.
+   - Access to the required Docker image in a container registry (the image is setup on Amazon ECR and configured in the GitHub environment secrets).
+   - A Kubernetes secret named `hubspot-crm-secrets` that contains the necessary environment variables such as the Hubspot OAuth credentials, Redis, and other credentials, for the application.
+
+## Setup Instructions
+
+### 1. Clone the Repository
+First, clone the repository to your local machine:
+```bash
+git clone <repository-url>
+cd <repository-directory>
    
 
 ## Endpoints
