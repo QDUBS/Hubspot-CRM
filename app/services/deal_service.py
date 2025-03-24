@@ -1,10 +1,13 @@
 from hubspot import HubSpot
 from hubspot.crm.deals import ApiException
 from app.services import HubSpotClient
+from app.redis.redis_client import RedisClient
 from app.config import Config
 import logging
+import json
 
 logger = logging.getLogger(__name__)
+redis_client = RedisClient()
 
 
 class DealService(HubSpotClient):
@@ -100,11 +103,23 @@ class DealService(HubSpotClient):
             return None
 
     def get_recent_deals(self, page, page_size):
-        """Retrieve recently created deals."""
+        """Retrieve recently created deals with Redis caching."""
+        cache_key = f"deals_page_{page}_size_{page_size}"
+        cached_data = redis_client.get_cache(cache_key)
+
+        if cached_data:
+            return json.loads(cached_data)
+
+        # If not cached fetch from HubSpot and cache the result
         try:
             response = self.client.crm.deals.basic_api.get_page(
                 limit=page_size, after=page * page_size)
-            return response.results
+            deals = response.results
+
+            # Cache the response
+            redis_client.set_cache(cache_key, json.dumps(deals))
+
+            return deals
         except ApiException as e:
             logger.error(
                 f"Error fetching recent deals. Status code: {e.status}, Response: {e.body}")

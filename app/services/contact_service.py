@@ -1,21 +1,24 @@
 from hubspot import HubSpot
 from hubspot.crm.contacts import ApiException
 from app.services import HubSpotClient
+from app.redis.redis_client import RedisClient
 from app.config import Config
 import time
+import json
 import logging
 
 logger = logging.getLogger(__name__)
-
+redis_client = RedisClient()
 
 class ContactService(HubSpotClient):
     def __init__(self):
-        # Initialize HubSpot client with OAuth access token
+        # Initialize with OAuth access token
         super().__init__()
-        self.client = HubSpot(access_token=self.access_token)
+        access_token = self.get_access_token()
+        self.client = HubSpot(access_token=access_token)
 
     def create_or_update_contact(self, data):
-        """Create or update a contact in HubSpot."""
+        """Create or update a contact."""
         email = data['properties']['email']
 
         contact_exists = self._get_contact_by_email(email)
@@ -57,7 +60,7 @@ class ContactService(HubSpotClient):
             return None
 
     def _create_contact(self, data):
-        """Create a new contact in HubSpot."""
+        """Create a new contact."""
         contact_data = {
             "properties": {
                 "email": data['properties']['email'],
@@ -78,7 +81,7 @@ class ContactService(HubSpotClient):
             raise
 
     def _update_contact(self, contact_id, data):
-        """Update an existing contact in HubSpot."""
+        """Update an existing contact."""
         contact_data = {
             "properties": {
                 "email": data['properties']['email'],
@@ -100,12 +103,23 @@ class ContactService(HubSpotClient):
             raise
 
     def get_recent_contacts(self, page, page_size):
-        """Retrieve recently created contacts."""
+        """Retrieve recently created contacts with Redis caching."""
+        cache_key = f"contacts_page_{page}_size_{page_size}"
+        cached_data = redis_client.get_cache(cache_key)
+
+        if cached_data:
+            return json.loads(cached_data)
+
+        # If not cached fetch from HubSpot and cache the result
         try:
-            # Retrieve the most recent contacts
             response = self.client.crm.contacts.basic_api.get_page(
                 limit=page_size, after=page * page_size)
-            return response.results
+            contacts = response.results
+
+            # Cache the response
+            redis_client.set_cache(cache_key, json.dumps(contacts))
+
+            return contacts
         except ApiException as e:
             logger.error(
                 f"Error fetching recent contacts. Status code: {e.status}, Response: {e.body}")

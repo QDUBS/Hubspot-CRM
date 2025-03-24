@@ -2649,3 +2649,105 @@
 {"timestamp": "2025-03-21 17:56:39,573", "level": "INFO", "name": "app", "message": "Logging configured at level: INFO"}
 {"timestamp": "2025-03-21 17:56:39,687", "level": "WARNING", "name": "werkzeug", "message": " * Debugger is active!"}
 {"timestamp": "2025-03-21 17:56:39,712", "level": "INFO", "name": "werkzeug", "message": " * Debugger PIN: 665-438-654"}
+{"timestamp": "2025-03-24 11:33:01,014", "level": "INFO", "name": "app", "message": "Logging configured at level: INFO"}
+{"timestamp": "2025-03-24 11:33:01,573", "level": "INFO", "name": "werkzeug", "message": "\u001b[31m\u001b[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.\u001b[0m\n * Running on all addresses (0.0.0.0)\n * Running on http://127.0.0.1:5000\n * Running on http://192.168.0.145:5000"}
+{"timestamp": "2025-03-24 11:33:01,573", "level": "INFO", "name": "werkzeug", "message": "\u001b[33mPress CTRL+C to quit\u001b[0m"}
+{"timestamp": "2025-03-24 11:33:01,576", "level": "INFO", "name": "werkzeug", "message": " * Restarting with stat"}
+{"timestamp": "2025-03-24 11:33:07,323", "level": "INFO", "name": "app", "message": "Logging configured at level: INFO"}
+{"timestamp": "2025-03-24 11:33:07,424", "level": "WARNING", "name": "werkzeug", "message": " * Debugger is active!"}
+{"timestamp": "2025-03-24 11:33:07,447", "level": "INFO", "name": "werkzeug", "message": " * Debugger PIN: 665-438-654"}
+{"timestamp": "2025-03-24 11:33:07,565", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/', 'status': 200, 'duration_ms': 13.58}", "request": {"url": "http://localhost:5000/docs/", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:33:07,566", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:33:07] \"GET /docs/ HTTP/1.1\" 200 -"}
+{"timestamp": "2025-03-24 11:33:10,766", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/index.css', 'status': 200, 'duration_ms': 22.58}", "request": {"url": "http://localhost:5000/docs/index.css", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:33:10,768", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:33:10] \"GET /docs/index.css HTTP/1.1\" 200 -"}
+{"timestamp": "2025-03-24 11:33:11,039", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/swagger-ui.css', 'status': 200, 'duration_ms': 0.98}", "request": {"url": "http://localhost:5000/docs/swagger-ui.css", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:33:11,040", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:33:11] \"GET /docs/swagger-ui.css HTTP/1.1\" 200 -"}
+{"timestamp": "2025-03-24 11:33:11,042", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/swagger-ui-bundle.js', 'status': 200, 'duration_ms': 0.87}", "request": {"url": "http://localhost:5000/docs/swagger-ui-bundle.js", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:33:11,043", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:33:11] \"GET /docs/swagger-ui-bundle.js HTTP/1.1\" 200 -"}
+{"timestamp": "2025-03-24 11:33:12,683", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/swagger-ui-standalone-preset.js', 'status': 200, 'duration_ms': 2.14}", "request": {"url": "http://localhost:5000/docs/swagger-ui-standalone-preset.js", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:33:12,686", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:33:12] \"GET /docs/swagger-ui-standalone-preset.js HTTP/1.1\" 200 -"}
+{"timestamp": "2025-03-24 11:33:17,568", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/static/swagger.json', 'status': 200, 'duration_ms': 0.9}", "request": {"url": "http://localhost:5000/static/swagger.json", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:33:17,571", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:33:17] \"GET /static/swagger.json HTTP/1.1\" 200 -"}
+{"timestamp": "2025-03-24 11:33:17,814", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/favicon-32x32.png', 'status': 200, 'duration_ms': 1.83}", "request": {"url": "http://localhost:5000/docs/favicon-32x32.png", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:33:17,816", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:33:17] \"GET /docs/favicon-32x32.png HTTP/1.1\" 200 -"}
+{"timestamp": "2025-03-24 11:44:24,099", "level": "INFO", "name": "werkzeug", "message": " * Detected change in '/Users/confidence/Documents/Work/SavannahTech/hubspot-crm-integration/app/services/contact_service.py', reloading"}
+{"timestamp": "2025-03-24 11:44:25,868", "level": "INFO", "name": "werkzeug", "message": " * Restarting with stat"}
+{"timestamp": "2025-03-24 11:44:34,293", "level": "INFO", "name": "app", "message": "Logging configured at level: INFO"}
+{"timestamp": "2025-03-24 11:44:34,519", "level": "WARNING", "name": "werkzeug", "message": " * Debugger is active!"}
+{"timestamp": "2025-03-24 11:44:34,543", "level": "INFO", "name": "werkzeug", "message": " * Debugger PIN: 665-438-654"}
+{"timestamp": "2025-03-24 11:44:48,236", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/', 'status': 200, 'duration_ms': 17.77}", "request": {"url": "http://localhost:5000/docs/", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:44:48,237", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:44:48] \"GET /docs/ HTTP/1.1\" 200 -"}
+{"timestamp": "2025-03-24 11:44:48,373", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/swagger-ui-bundle.js', 'status': 304, 'duration_ms': 35.63}", "request": {"url": "http://localhost:5000/docs/swagger-ui-bundle.js", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:44:48,375", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/swagger-ui.css', 'status': 304, 'duration_ms': 41.73}", "request": {"url": "http://localhost:5000/docs/swagger-ui.css", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:44:48,378", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/index.css', 'status': 304, 'duration_ms': 46.06}", "request": {"url": "http://localhost:5000/docs/index.css", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:44:48,385", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:44:48] \"\u001b[36mGET /docs/swagger-ui-bundle.js HTTP/1.1\u001b[0m\" 304 -"}
+{"timestamp": "2025-03-24 11:44:48,387", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:44:48] \"\u001b[36mGET /docs/swagger-ui.css HTTP/1.1\u001b[0m\" 304 -"}
+{"timestamp": "2025-03-24 11:44:48,395", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:44:48] \"\u001b[36mGET /docs/index.css HTTP/1.1\u001b[0m\" 304 -"}
+{"timestamp": "2025-03-24 11:44:48,410", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/swagger-ui-standalone-preset.js', 'status': 304, 'duration_ms': 61.64}", "request": {"url": "http://localhost:5000/docs/swagger-ui-standalone-preset.js", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:44:48,436", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:44:48] \"\u001b[36mGET /docs/swagger-ui-standalone-preset.js HTTP/1.1\u001b[0m\" 304 -"}
+{"timestamp": "2025-03-24 11:44:50,075", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/static/swagger.json', 'status': 304, 'duration_ms': 2.73}", "request": {"url": "http://localhost:5000/static/swagger.json", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:44:50,077", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:44:50] \"\u001b[36mGET /static/swagger.json HTTP/1.1\u001b[0m\" 304 -"}
+{"timestamp": "2025-03-24 11:44:50,291", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/favicon-32x32.png', 'status': 304, 'duration_ms': 1.35}", "request": {"url": "http://localhost:5000/docs/favicon-32x32.png", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:44:50,292", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:44:50] \"\u001b[36mGET /docs/favicon-32x32.png HTTP/1.1\u001b[0m\" 304 -"}
+{"timestamp": "2025-03-24 11:46:47,191", "level": "WARNING", "name": "app.middleware.logging", "message": "Request processed: {'method': 'POST', 'path': '/api/create_contact', 'status': 401, 'duration_ms': 3.52}", "request": {"url": "http://localhost:5000/api/create_contact", "method": "POST", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:46:47,194", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:46:47] \"\u001b[31m\u001b[1mPOST /api/create_contact HTTP/1.1\u001b[0m\" 401 -"}
+{"timestamp": "2025-03-24 11:47:18,055", "level": "INFO", "name": "werkzeug", "message": " * Detected change in '/Users/confidence/Documents/Work/SavannahTech/hubspot-crm-integration/app/routes/integration.py', reloading"}
+{"timestamp": "2025-03-24 11:47:18,954", "level": "INFO", "name": "werkzeug", "message": " * Restarting with stat"}
+{"timestamp": "2025-03-24 11:47:25,795", "level": "INFO", "name": "app", "message": "Logging configured at level: INFO"}
+{"timestamp": "2025-03-24 11:47:25,995", "level": "WARNING", "name": "werkzeug", "message": " * Debugger is active!"}
+{"timestamp": "2025-03-24 11:47:26,013", "level": "INFO", "name": "werkzeug", "message": " * Debugger PIN: 665-438-654"}
+{"timestamp": "2025-03-24 11:47:27,396", "level": "INFO", "name": "werkzeug", "message": " * Detected change in '/Users/confidence/Documents/Work/SavannahTech/hubspot-crm-integration/app/routes/integration.py', reloading"}
+{"timestamp": "2025-03-24 11:47:28,242", "level": "INFO", "name": "werkzeug", "message": " * Restarting with stat"}
+{"timestamp": "2025-03-24 11:47:33,840", "level": "INFO", "name": "app", "message": "Logging configured at level: INFO"}
+{"timestamp": "2025-03-24 11:47:33,904", "level": "WARNING", "name": "werkzeug", "message": " * Debugger is active!"}
+{"timestamp": "2025-03-24 11:47:33,927", "level": "INFO", "name": "werkzeug", "message": " * Debugger PIN: 665-438-654"}
+{"timestamp": "2025-03-24 11:47:34,410", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/', 'status': 200, 'duration_ms': 17.41}", "request": {"url": "http://localhost:5000/docs/", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:47:34,411", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:47:34] \"GET /docs/ HTTP/1.1\" 200 -"}
+{"timestamp": "2025-03-24 11:47:34,562", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/swagger-ui.css', 'status': 304, 'duration_ms': 12.01}", "request": {"url": "http://localhost:5000/docs/swagger-ui.css", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:47:34,565", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:47:34] \"\u001b[36mGET /docs/swagger-ui.css HTTP/1.1\u001b[0m\" 304 -"}
+{"timestamp": "2025-03-24 11:47:34,572", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/index.css', 'status': 304, 'duration_ms': 47.21}", "request": {"url": "http://localhost:5000/docs/index.css", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:47:34,578", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:47:34] \"\u001b[36mGET /docs/index.css HTTP/1.1\u001b[0m\" 304 -"}
+{"timestamp": "2025-03-24 11:47:34,583", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/swagger-ui-standalone-preset.js', 'status': 304, 'duration_ms': 2.89}", "request": {"url": "http://localhost:5000/docs/swagger-ui-standalone-preset.js", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:47:34,585", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/swagger-ui-bundle.js', 'status': 304, 'duration_ms': 9.22}", "request": {"url": "http://localhost:5000/docs/swagger-ui-bundle.js", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:47:34,591", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:47:34] \"\u001b[36mGET /docs/swagger-ui-standalone-preset.js HTTP/1.1\u001b[0m\" 304 -"}
+{"timestamp": "2025-03-24 11:47:34,592", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:47:34] \"\u001b[36mGET /docs/swagger-ui-bundle.js HTTP/1.1\u001b[0m\" 304 -"}
+{"timestamp": "2025-03-24 11:47:35,658", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/static/swagger.json', 'status': 304, 'duration_ms': 2.05}", "request": {"url": "http://localhost:5000/static/swagger.json", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:47:35,661", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:47:35] \"\u001b[36mGET /static/swagger.json HTTP/1.1\u001b[0m\" 304 -"}
+{"timestamp": "2025-03-24 11:47:35,669", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'GET', 'path': '/docs/favicon-32x32.png', 'status': 304, 'duration_ms': 1.68}", "request": {"url": "http://localhost:5000/docs/favicon-32x32.png", "method": "GET", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 11:47:35,671", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 11:47:35] \"\u001b[36mGET /docs/favicon-32x32.png HTTP/1.1\u001b[0m\" 304 -"}
+{"timestamp": "2025-03-24 12:21:11,965", "level": "INFO", "name": "werkzeug", "message": " * Detected change in '/Users/confidence/Documents/Work/SavannahTech/hubspot-crm-integration/app/services/__init__.py', reloading"}
+{"timestamp": "2025-03-24 12:21:12,761", "level": "INFO", "name": "werkzeug", "message": " * Restarting with stat"}
+{"timestamp": "2025-03-24 12:21:19,050", "level": "INFO", "name": "app", "message": "Logging configured at level: INFO"}
+{"timestamp": "2025-03-24 12:21:19,243", "level": "WARNING", "name": "werkzeug", "message": " * Debugger is active!"}
+{"timestamp": "2025-03-24 12:21:19,267", "level": "INFO", "name": "werkzeug", "message": " * Debugger PIN: 665-438-654"}
+{"timestamp": "2025-03-24 12:21:28,805", "level": "INFO", "name": "werkzeug", "message": " * Detected change in '/Users/confidence/Documents/Work/SavannahTech/hubspot-crm-integration/app/services/__init__.py', reloading"}
+{"timestamp": "2025-03-24 12:21:30,540", "level": "INFO", "name": "werkzeug", "message": " * Restarting with stat"}
+{"timestamp": "2025-03-24 12:21:36,858", "level": "INFO", "name": "app", "message": "Logging configured at level: INFO"}
+{"timestamp": "2025-03-24 12:21:36,974", "level": "WARNING", "name": "werkzeug", "message": " * Debugger is active!"}
+{"timestamp": "2025-03-24 12:21:36,992", "level": "INFO", "name": "werkzeug", "message": " * Debugger PIN: 665-438-654"}
+{"timestamp": "2025-03-24 12:22:51,894", "level": "INFO", "name": "app.services.contact_service", "message": "Contact with email confidenceqdubs24@gmail.com exists. Updating contact.", "request": {"url": "http://localhost:5000/api/create_contact", "method": "POST", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 12:22:52,709", "level": "INFO", "name": "app.services.contact_service", "message": "Successfully updated contact with email confidenceqdubs24@gmail.com", "request": {"url": "http://localhost:5000/api/create_contact", "method": "POST", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 12:22:52,711", "level": "INFO", "name": "app.middleware.logging", "message": "Request processed: {'method': 'POST', 'path': '/api/create_contact', 'status': 200, 'duration_ms': 1524.83}", "request": {"url": "http://localhost:5000/api/create_contact", "method": "POST", "remote_addr": "127.0.0.1"}}
+{"timestamp": "2025-03-24 12:22:52,711", "level": "INFO", "name": "werkzeug", "message": "127.0.0.1 - - [24/Mar/2025 12:22:52] \"POST /api/create_contact HTTP/1.1\" 200 -"}
+{"timestamp": "2025-03-24 12:24:50,399", "level": "INFO", "name": "werkzeug", "message": " * Detected change in '/Users/confidence/Documents/Work/SavannahTech/hubspot-crm-integration/app/services/contact_service.py', reloading"}
+{"timestamp": "2025-03-24 12:24:51,008", "level": "INFO", "name": "werkzeug", "message": " * Restarting with stat"}
+{"timestamp": "2025-03-24 12:24:58,008", "level": "INFO", "name": "app", "message": "Logging configured at level: INFO"}
+{"timestamp": "2025-03-24 12:24:58,172", "level": "WARNING", "name": "werkzeug", "message": " * Debugger is active!"}
+{"timestamp": "2025-03-24 12:24:58,191", "level": "INFO", "name": "werkzeug", "message": " * Debugger PIN: 665-438-654"}
+{"timestamp": "2025-03-24 12:37:07,578", "level": "INFO", "name": "werkzeug", "message": " * Detected change in '/Users/confidence/Documents/Work/SavannahTech/hubspot-crm-integration/app/redis/config.py', reloading"}
+{"timestamp": "2025-03-24 12:37:08,318", "level": "INFO", "name": "werkzeug", "message": " * Restarting with stat"}
+{"timestamp": "2025-03-24 12:37:13,697", "level": "INFO", "name": "app", "message": "Logging configured at level: INFO"}
+{"timestamp": "2025-03-24 12:37:13,768", "level": "WARNING", "name": "werkzeug", "message": " * Debugger is active!"}
+{"timestamp": "2025-03-24 12:37:13,790", "level": "INFO", "name": "werkzeug", "message": " * Debugger PIN: 665-438-654"}
+{"timestamp": "2025-03-24 12:37:39,000", "level": "INFO", "name": "werkzeug", "message": " * Detected change in '/Users/confidence/Documents/Work/SavannahTech/hubspot-crm-integration/app/redis/redis_client.py', reloading"}
+{"timestamp": "2025-03-24 12:37:40,574", "level": "INFO", "name": "werkzeug", "message": " * Restarting with stat"}
+{"timestamp": "2025-03-24 12:37:47,444", "level": "INFO", "name": "app", "message": "Logging configured at level: INFO"}
+{"timestamp": "2025-03-24 12:37:47,555", "level": "WARNING", "name": "werkzeug", "message": " * Debugger is active!"}
+{"timestamp": "2025-03-24 12:37:47,580", "level": "INFO", "name": "werkzeug", "message": " * Debugger PIN: 665-438-654"}
+{"timestamp": "2025-03-24 12:37:49,097", "level": "INFO", "name": "werkzeug", "message": " * Detected change in '/Users/confidence/Documents/Work/SavannahTech/hubspot-crm-integration/app/redis/redis_client.py', reloading"}
+{"timestamp": "2025-03-24 12:37:50,307", "level": "INFO", "name": "werkzeug", "message": " * Restarting with stat"}
+{"timestamp": "2025-03-24 12:37:56,824", "level": "INFO", "name": "app", "message": "Logging configured at level: INFO"}
+{"timestamp": "2025-03-24 12:37:56,911", "level": "WARNING", "name": "werkzeug", "message": " * Debugger is active!"}
+{"timestamp": "2025-03-24 12:37:56,939", "level": "INFO", "name": "werkzeug", "message": " * Debugger PIN: 665-438-654"}
+{"timestamp": "2025-03-24 12:38:48,028", "level": "INFO", "name": "werkzeug", "message": " * Detected change in '/Users/confidence/Documents/Work/SavannahTech/hubspot-crm-integration/app/services/contact_service.py', reloading"}
+{"timestamp": "2025-03-24 12:38:48,765", "level": "INFO", "name": "werkzeug", "message": " * Restarting with stat"}

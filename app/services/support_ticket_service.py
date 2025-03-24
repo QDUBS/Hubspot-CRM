@@ -1,10 +1,13 @@
 from hubspot import HubSpot
 from hubspot.crm.tickets import ApiException
 from app.services import HubSpotClient
+from app.redis.redis_client import RedisClient
 from app.config import Config
 import logging
+import json
 
 logger = logging.getLogger(__name__)
+redis_client = RedisClient()
 
 
 class SupportTicketService(HubSpotClient):
@@ -73,11 +76,23 @@ class SupportTicketService(HubSpotClient):
 
 
     def get_recent_tickets(self, page, page_size):
-        """Retrieve recently created tickets."""
+        """Retrieve recently created tickets with Redis caching."""
+        cache_key = f"tickets_page_{page}_size_{page_size}"
+        cached_data = redis_client.get_cache(cache_key)
+
+        if cached_data:
+            return json.loads(cached_data)
+
+        # If not cached, fetch from HubSpot and cache the result
         try:
             response = self.client.crm.tickets.basic_api.get_page(
                 limit=page_size, after=page * page_size)
-            return response.results
+            tickets = response.results
+
+            # Cache the response
+            redis_client.set_cache(cache_key, json.dumps(tickets))
+
+            return tickets
         except ApiException as e:
             logger.error(
                 f"Error fetching recent tickets. Status code: {e.status}, Response: {e.body}")

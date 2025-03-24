@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hubspot-crm
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hubspot-crm
+  template:
+    metadata:
+      labels:
+        app: hubspot-crm
+    spec:
+      containers:
+        - name: hubspot-crm
+          image: ${{ secrets.ECR_REPOSITORY }}:latest
+          ports:
+            - containerPort: 5000
+          envFrom:
+            - secretRef:
+                name: hubspot-crm-secrets
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"    
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hubspot-crm-service
+spec:
+  selector:
+    app: hubspot-crm
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: LoadBalancer

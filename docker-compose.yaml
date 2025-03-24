@@ -16,6 +16,7 @@ services:
       - app-network
     depends_on:
       - db
+      - redis
     volumes:
       - .:/app
     restart: unless-stopped
@@ -34,6 +35,13 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
+
+  redis:
+    image: "redis:alpine"
+    restart: always
+    container_name: redis
+    ports:
+     - '6379:6379'
 
 networks:
   app-network:

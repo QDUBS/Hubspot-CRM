@@ -1,70 +1,70 @@
 import requests
-import json
+import time
 import logging
 from app.config import Config
 from hubspot import HubSpot
+from app.redis.redis_client import RedisClient
 
 
 logger = logging.getLogger(__name__)
 
+
 class HubSpotClient:
-    def __init__(self):
+    def __init__(self, access_token=None):
         self.base_url = "https://api.hubapi.com"
         self.client_id = Config.HUBSPOT_CLIENT_ID
         self.client_secret = Config.HUBSPOT_CLIENT_SECRET
         self.refresh_token = Config.HUBSPOT_REFRESH_TOKEN
-        self.access_token = self._get_access_token()
+        self.access_token = access_token
+        self.redis_client = RedisClient()
 
-    def _get_access_token(self):
-        """Retrieve the access token using the refresh token."""
-        url = f"https://api.hubapi.com/oauth/v1/token"
-        payload = {
+    def get_access_token(self):
+        """Retrieve the access token from Redis or refresh if expired."""
+        # Check for the token in Redis
+        access_token_data = self.redis_client.get_token()
+
+        if access_token_data:
+            access_token, expires_in = access_token_data
+
+            logger.warning(f"Token retrieved successfully.")
+            if time.time() < expires_in:
+                return access_token
+            else:
+                # If expired, refresh the token
+                logger.warning(f"Token expired. Refreshing token.")
+                self.refresh_access_token()
+                return self.access_token
+        else:
+            # If token not found in Redis refresh it
+            logger.warning(f"Token not found. Refreshing token.")
+            self.refresh_access_token()
+            return self.access_token
+
+    def refresh_access_token(self):
+        """Refresh the access token"""
+        url = "https://api.hubapi.com/oauth/v1/token"
+        data = {
             "grant_type": "refresh_token",
             "client_id": self.client_id,
             "client_secret": self.client_secret,
             "refresh_token": self.refresh_token
         }
-        response = requests.post(url, data=payload)
+
+        response = requests.post(url, data=data)
 
         if response.status_code == 200:
             data = response.json()
-            self.access_token = data.get('access_token')
-            logger.info(f"Access token obtained successfully: {self.access_token[:10]}...")
-            return self.access_token
+            new_access_token = data["access_token"]
+            expires_in = data["expires_in"]
+
+            # Store the new token and expiration time in Redis
+            self.redis_client.set_token(new_access_token, expires_in)
+
+            self.access_token = new_access_token
+
+            logger.info(
+                f"New request token generated. Status code: {response.status_code}, Response: {response.text}")
         else:
             logger.error(
-                f"Failed to get access token. Status code: {response.status_code}, Response: {response.text}")
-            raise Exception("Unable to get access token")
-
-    def _make_request(self, method, url, data=None):
-        """Helper method to make authenticated API requests."""
-        headers = {
-            "Authorization": f"Bearer {self.access_token}",
-            "Content-Type": "application/json"
-        }
-        if method == 'GET':
-            response = requests.get(url, headers=headers)
-        elif method == 'POST':
-            response = requests.post(
-                url, headers=headers, data=json.dumps(data))
-
-        if response.status_code == 401:
-            # Log the failed API request and authentication issue
-            logger.warning(
-                f"API Authentication failed for URL: {url}. Retrying token refresh.")
-
-            # Token expired, refresh it
-            self.access_token = self._get_access_token()
-            return self._make_request(method, url, data)
-        
-        if response.status_code != 200:
-            # Log any other error responses to help with debugging
-            logger.error(
-                f"API Request failed for URL: {url}. Status code: {response.status_code}, Response: {response.text}")
-
-        return response
-
-    def check_and_refresh_token(self):
-        """Check if the token is valid; refresh if necessary."""
-        if not self.access_token:
-            self.access_token = self._get_access_token()
+                f"Token refresh failed for. Retrying token refresh.")
+            raise Exception(f"Failed to refresh token: {response.text}")

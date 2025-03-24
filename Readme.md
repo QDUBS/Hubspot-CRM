@@ -68,7 +68,18 @@ This project leverages Flask for the backend and integrates with HubSpot's CRM s
    alembic downgrade <revision_id> # To revert to a previous migration
    ```
 
-6. **Access the App**:
+6. **Setup Redis**:
+   - Ensure that you have Redis properly setup on your local machine
+   - Configure your Redis connection credentials in the `.env` file:
+
+      ```
+      REDIS_HOST=
+      REDIS_PORT=
+      REDIS_USERNAME=
+      REDIS_PASSWORD=
+      ```
+
+7. **Access the App**:
    - API available at http://localhost:5000
    - Swagger Documentation available at http://localhost:5000/docs
    - Health check at http://localhost:5000/health
